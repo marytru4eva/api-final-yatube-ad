@@ -21,10 +21,10 @@ class Post(models.Model):
     image = models.ImageField(
         upload_to='posts/', null=True, blank=True)
     group = models.ForeignKey(
-        Group, 
-        on_delete=models.SET_NULL, 
-        blank=True, 
-        null=True, 
+        Group,
+        on_delete=models.SET_NULL,
+        blank=True,
+        null=True,
         related_name='posts'
     )
 
