@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Наше мороженое</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .ice-cream { 
+            border: 1px solid #ddd; 
+            padding: 15px; 
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+        .price { 
+            color: #e67e22; 
+            font-weight: bold; 
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>🍦 Наше мороженое</h1>
+    
+    {% for ice in ice_creams %}
+    <div class="ice-cream">
+        <h2>{{ ice.title }}</h2>
+        <p>{{ ice.description }}</p>
+        <p class="price">{{ ice.price }} ₽</p>
+        <p>Категория: {{ ice.category.title }}</p>
+        
+        {% if ice.toppings.all %}
+        <p>Топпинги: 
+            {% for topping in ice.toppings.all %}
+                {{ topping.title }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+        {% endif %}
+    </div>
+    {% empty %}
+    <p>Мороженое скоро появится!</p>
+    {% endfor %}
+</body>
+</html>

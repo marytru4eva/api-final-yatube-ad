@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}
+  Анфиса для друзей. Каталог мороженого
+{% endblock %}
+{% block content %}
+  <h1>Каталог мороженого</h1>
+  <ul>
+    {% for ice_cream in ice_creams %}  <!-- ← замени ice_cream_list на ice_creams -->
+        <li>
+            <h2>{{ ice_cream.title }}</h2>
+            <p>{{ ice_cream.description }}</p>
+            <p>Цена: {{ ice_cream.price }} ₽</p>
+        </li>
+    {% empty %}
+        <li>Мороженого пока нет</li>
+    {% endfor %}
+</ul>
+{% endblock %}
