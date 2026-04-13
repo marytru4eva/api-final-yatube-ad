@@ -1,0 +1,15 @@
+# Virtual Environment
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+# Database
+db.sqlite3
+
+# Static files
+static/
+
+# IDE
+.vscode/
+.idea/

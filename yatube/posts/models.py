@@ -28,35 +28,24 @@ class Post(models.Model):
         blank=True,
         null=True
     )
-    image = models.ImageField(
-        upload_to='posts/',
-        blank=True,
-        null=True
-    )
-
-    class Meta:
-        ordering = ['-pub_date']
 
     def __str__(self):
-        return self.text[:15]
+        return self.text[:30]
 
 
 class Comment(models.Model):
-    author = models.ForeignKey(
-        User,
+    post = models.ForeignKey(
+        Post,
         on_delete=models.CASCADE,
         related_name='comments'
     )
-    post = models.ForeignKey(
-        Post,
+    author = models.ForeignKey(
+        User,
         on_delete=models.CASCADE,
         related_name='comments'
     )
     text = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
-        ordering = ['-created']
-
     def __str__(self):
-        return self.text[:15]
+        return self.text[:30]
